@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Creative — marketing CLOUD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Nanum+Gothic:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     AI CREATIVE  |  marketing CLOUD
+     드롭인 섹션. 모든 스타일/스크립트는 #aic 안에서만 동작하므로
+     워드프레스 'Custom HTML' 블록이나 페이지에 그대로 붙여넣어도
+     테마 CSS와 충돌하지 않습니다.
+
+     ▶ 미디어 경로만 바꾸면 됩니다:  아래 <script> 안의  ASSET_BASE
+       - 같은 폴더에 assets/ 를 함께 올릴 경우:  "assets/"  (기본값)
+       - 워드프레스 미디어 라이브러리/CDN 사용 시:  전체 URL 로 교체
+         예) "https://www.macloud.co.kr/wp-content/uploads/ai-creative/"
+     ============================================================ -->
+
+<style>
+#aic, #aic *{ margin:0; padding:0; box-sizing:border-box; }
+#aic{
+  --bg:#0a0b0d;
+  --surface:#121317;
+  --line:#23252b;
+  --text:#f2f3f5;
+  --muted:#8b909a;
+  --accent:#e8203a;
+  --accent-soft:rgba(232,32,58,.14);
+  --radius:14px;
+  font-family:"Noto Sans KR",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow:hidden;
+}
+#aic::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(60% 50% at 78% 0%, rgba(232,32,58,.10), transparent 60%),
+    radial-gradient(50% 40% at 10% 8%, rgba(60,80,140,.10), transparent 60%);
+}
+#aic .aic-wrap{ max-width:1320px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+/* ---------- Hero ---------- */
+#aic .aic-hero{ padding:96px 0 40px; }
+#aic .aic-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:"Space Grotesk",sans-serif; font-weight:600;
+  font-size:13px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted);
+}
+#aic .aic-eyebrow .dot{ width:9px; height:9px; background:var(--accent); border-radius:2px; box-shadow:0 0 14px var(--accent); }
+#aic .aic-title{
+  font-family:"Space Grotesk",sans-serif; font-weight:700;
+  font-size:clamp(44px,8vw,104px); line-height:.96; letter-spacing:-.02em;
+  margin:18px 0 22px;
+}
+#aic .aic-title em{ color:var(--accent); font-style:normal; }
+#aic .aic-lead{
+  font-family:"Nanum Gothic",sans-serif; font-weight:700;
+  font-size:clamp(17px,2.4vw,23px); color:#dfe2e7; max-width:760px; word-break:keep-all;
+}
+#aic .aic-lead b{ color:#fff; border-bottom:2px solid var(--accent); padding-bottom:1px; }
+#aic .aic-meta{
+  display:flex; flex-wrap:wrap; gap:28px; margin-top:34px;
+  border-top:1px solid var(--line); padding-top:26px;
+}
+#aic .aic-meta .stat .n{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:30px; }
+#aic .aic-meta .stat .n .plus{ color:var(--accent); }
+#aic .aic-meta .stat .l{ font-size:12px; color:var(--muted); letter-spacing:.06em; }
+
+/* ---------- Filters ---------- */
+#aic .aic-filters{
+  display:flex; flex-wrap:wrap; gap:8px; padding:34px 0 26px; position:relative; z-index:2;
+}
+#aic .aic-chip{
+  font:inherit; font-size:14px; font-weight:500; cursor:pointer;
+  color:var(--muted); background:transparent;
+  border:1px solid var(--line); border-radius:999px;
+  padding:9px 18px; transition:.18s ease;
+  font-family:"Noto Sans KR",sans-serif;
+}
+#aic .aic-chip:hover{ color:var(--text); border-color:#3a3d45; }
+#aic .aic-chip[aria-pressed="true"]{
+  color:#fff; background:var(--accent); border-color:var(--accent);
+  box-shadow:0 6px 22px -8px var(--accent);
+}
+
+/* ---------- Masonry grid ---------- */
+#aic .aic-grid{ column-count:4; column-gap:16px; padding-bottom:30px; }
+@media(max-width:1080px){ #aic .aic-grid{ column-count:3; } }
+@media(max-width:720px){ #aic .aic-grid{ column-count:2; column-gap:12px; } }
+@media(max-width:420px){ #aic .aic-grid{ column-count:1; } }
+
+#aic .aic-card{
+  break-inside:avoid; position:relative; margin-bottom:16px;
+  border-radius:var(--radius); overflow:hidden; background:var(--surface);
+  border:1px solid var(--line); cursor:pointer; display:block;
+  transition:transform .28s cubic-bezier(.2,.7,.2,1), border-color .28s, box-shadow .28s;
+}
+@media(max-width:720px){ #aic .aic-card{ margin-bottom:12px; } }
+#aic .aic-card:hover{ transform:translateY(-4px); border-color:#3c3f48; box-shadow:0 18px 40px -20px rgba(0,0,0,.8); }
+#aic .aic-card img, #aic .aic-card video{ width:100%; display:block; background:#16181d; }
+
+#aic .aic-tag{
+  position:absolute; top:10px; left:10px; z-index:3;
+  font-size:11px; font-weight:700; letter-spacing:.02em;
+  color:#fff; background:rgba(10,11,13,.7); backdrop-filter:blur(6px);
+  padding:5px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+}
+#aic .aic-idx{
+  position:absolute; top:10px; right:10px; z-index:3;
+  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.04em;
+  color:var(--muted); background:rgba(10,11,13,.7); backdrop-filter:blur(6px);
+  padding:5px 8px; border-radius:6px; border:1px solid rgba(255,255,255,.08);
+}
+#aic .aic-vbadge{
+  position:absolute; bottom:10px; left:10px; z-index:3;
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:700; color:#fff;
+  background:var(--accent); padding:5px 10px 5px 8px; border-radius:999px;
+  box-shadow:0 6px 18px -6px var(--accent);
+}
+#aic .aic-vbadge .lv{ width:6px; height:6px; border-radius:50%; background:#fff; animation:aicPulse 1.4s ease-in-out infinite; }
+@keyframes aicPulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.35; transform:scale(.6);} }
+
+#aic .aic-cap{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding:34px 14px 13px; color:#fff;
+  background:linear-gradient(to top, rgba(8,9,11,.92), rgba(8,9,11,.55) 55%, transparent);
+  font-family:"Nanum Gothic",sans-serif; font-weight:700; font-size:14px;
+  word-break:keep-all; opacity:0; transform:translateY(8px); transition:.26s ease;
+}
+#aic .aic-card:hover .aic-cap{ opacity:1; transform:none; }
+@media(hover:none){ #aic .aic-cap{ opacity:1; transform:none; padding-top:40px; } }
+
+/* ---------- Lightbox ---------- */
+#aic .aic-lb{
+  position:fixed; inset:0; z-index:9999; display:none;
+  background:rgba(5,6,8,.93); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center; padding:24px;
+}
+#aic .aic-lb.open{ display:flex; }
+#aic .aic-lb-inner{ max-width:min(92vw,1100px); max-height:90vh; display:flex; flex-direction:column; align-items:center; gap:14px; }
+#aic .aic-lb-media{ max-width:100%; max-height:78vh; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#000; }
+#aic .aic-lb-media img, #aic .aic-lb-media video{ display:block; max-width:100%; max-height:78vh; width:auto; height:auto; }
+#aic .aic-lb-cap{ font-family:"Nanum Gothic",sans-serif; font-weight:700; color:#fff; text-align:center; font-size:15px; }
+#aic .aic-lb-cap span{ display:block; color:var(--muted); font-family:"JetBrains Mono",monospace; font-weight:500; font-size:11px; margin-top:4px; letter-spacing:.06em; }
+#aic .aic-lb-x{
+  position:fixed; top:20px; right:24px; z-index:10000;
+  width:44px; height:44px; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#fff;
+  font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center;
+}
+#aic .aic-lb-x:hover{ background:var(--accent); border-color:var(--accent); }
+
+/* ---------- Footer ---------- */
+#aic .aic-foot{
+  border-top:1px solid var(--line); margin-top:24px; padding:34px 0 56px;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;
+}
+#aic .aic-foot .brand{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:16px; letter-spacing:.01em; }
+#aic .aic-foot .brand .c{ color:var(--accent); }
+#aic .aic-foot .copy{ color:var(--muted); font-size:13px; }
+
+#aic .aic-empty{ color:var(--muted); padding:40px 0; text-align:center; font-size:14px; display:none; }
+</style>
+</head>
+<body>
+
+<!-- ===== 여기서부터 붙여넣기 (이 div 통째로) ===== -->
+<section id="aic">
+  <div class="aic-wrap">
+
+    <header class="aic-hero">
+      <span class="aic-eyebrow"><span class="dot"></span> AI Creative Lab</span>
+      <h1 class="aic-title">AI <em>CREATIVE</em></h1>
+      <p class="aic-lead">크리에이티브팀이 직접 제작한 <b>AI Creative Sample</b>로<br>고효율 광고 소재를 지속적으로 개발합니다.</p>
+      <div class="aic-meta">
+        <div class="stat"><div class="n">34<span class="plus">+</span></div><div class="l">제작 소재 / SAMPLES</div></div>
+        <div class="stat"><div class="n">05</div><div class="l">자동재생 영상 / VIDEO</div></div>
+        <div class="stat"><div class="n">04</div><div class="l">브랜드 / CLIENTS</div></div>
+      </div>
+    </header>
+
+    <div class="aic-filters" id="aicFilters">
+      <button class="aic-chip" data-f="all" aria-pressed="true">전체</button>
+      <button class="aic-chip" data-f="video" aria-pressed="false">영상</button>
+      <button class="aic-chip" data-f="shinhan" aria-pressed="false">신한투자증권</button>
+      <button class="aic-chip" data-f="skylife" aria-pressed="false">KT 스카이라이프</button>
+      <button class="aic-chip" data-f="bblab" aria-pressed="false">BB LAB</button>
+      <button class="aic-chip" data-f="camp" aria-pressed="false">보험 · 캠페인</button>
+    </div>
+
+    <div class="aic-grid" id="aicGrid"></div>
+    <p class="aic-empty" id="aicEmpty">해당 카테고리의 소재가 없습니다.</p>
+
+    <footer class="aic-foot">
+      <div class="brand">marketing <span class="c">CLOUD</span></div>
+      <div class="copy">© 2026 marketing CLOUD. All rights reserved.</div>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="aic-lb" id="aicLb" role="dialog" aria-modal="true">
+    <button class="aic-lb-x" id="aicLbX" aria-label="닫기">×</button>
+    <div class="aic-lb-inner">
+      <div class="aic-lb-media" id="aicLbMedia"></div>
+      <div class="aic-lb-cap" id="aicLbCap"></div>
+    </div>
+  </div>
+</section>
+<!-- ===== 붙여넣기 끝 ===== -->
+
+<script>
+(function(){
+  /* ▼▼ 미디어 위치만 여기서 바꾸세요 ▼▼ */
+  var ASSET_BASE = "assets/";
+  /* ▲▲ (예: "https://www.macloud.co.kr/wp-content/uploads/ai-creative/") ▲▲ */
+
+  // type:'video' 는 자동재생(무음·반복), 'img' 는 정지 이미지
+  // cats: 필터 분류 / cap: 카드 설명 / idx: 일련번호
+  var ITEMS = [
+    {t:'video', src:'video/v01.mp4', poster:'img/p-v01.png', cats:['skylife'], cap:'KT 스카이라이프 · “내가 원하는 속도로?”'},
+    {t:'img', src:'img/c05.jpg', cats:['shinhan'], cap:'신한투자증권 · AI 추천주로 빠르게 환승'},
+    {t:'img', src:'img/c07.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면?'},
+    {t:'video', src:'video/v02.mp4', poster:'img/p-v02.png', cats:['bblab'], cap:'BB LAB · 브랜드 필름'},
+    {t:'img', src:'img/c25.png', cats:['bblab'], cap:'BB LAB · 석류 콜라겐'},
+    {t:'img', src:'img/c02.jpg', cats:['shinhan'], cap:'신한투자증권 · 시원하게 뺑!'},
+    {t:'img', src:'img/c21.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 가정이 가장 좋아하는 요금제'},
+    {t:'img', src:'img/c11.png', cats:['camp'], cap:'캠페인 · 덕질·보(保) 콘텐츠'},
+    {t:'video', src:'video/v04.mp4', poster:'img/p-v04.png', cats:['skylife'], cap:'KT 스카이라이프 · 라인 모션 그래픽'},
+    {t:'img', src:'img/c10.png', cats:['camp'], cap:'보험 · 효도는 티켓으로, 사랑은 보험으로'},
+    {t:'img', src:'img/c08.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면? (2)'},
+    {t:'img', src:'img/c27.png', cats:['bblab'], cap:'BB LAB · 모델 룩북'},
+    {t:'img', src:'img/c01.png', cats:['shinhan'], cap:'신한투자증권 · 1달러 모험단'},
+    {t:'video', src:'video/v05.mp4', poster:'img/p-v05.png', cats:['camp'], cap:'모바일 라이프스타일 필름'},
+    {t:'img', src:'img/c22.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 혜택 넘치는 30GB 요금제'},
+    {t:'img', src:'img/c15.png', cats:['camp'], cap:'ALICE · 덕밍아웃 선물 캠페인'},
+    {t:'img', src:'img/c26.png', cats:['bblab'], cap:'BB LAB · 석류 콜라겐 (2)'},
+    {t:'img', src:'img/c03.jpg', cats:['shinhan'], cap:'신한투자증권 · 상한가(O)'},
+    {t:'img', src:'img/c09.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면? (3)'},
+    {t:'img', src:'img/c17.png', cats:['camp'], cap:'캠페인 · 동파!'},
+    {t:'video', src:'video/v03.mp4', poster:'img/p-v03.png', cats:['camp'], cap:'스마트폰 백업이 “짝!”'},
+    {t:'img', src:'img/c12.png', cats:['camp'], cap:'보험 · 오늘은 아들한테'},
+    {t:'img', src:'img/c23.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 엉뚱도 WON해요'},
+    {t:'img', src:'img/c28.png', cats:['bblab'], cap:'BB LAB · 콜라겐S'},
+    {t:'img', src:'img/c04.jpg', cats:['shinhan'], cap:'신한투자증권 · 신규 주식매일장'},
+    {t:'img', src:'img/c20.jpeg', cats:['camp'], cap:'캠페인 · 청년만 가능한 조합, ONLY YOUTH'},
+    {t:'img', src:'img/c13.png', cats:['camp'], cap:'보험 · 콘서트 티켓과 덕질용품을'},
+    {t:'img', src:'img/c24.png', cats:['skylife'], cap:'KT 스카이라이프 · 우리가 WON하면 편한 여행'},
+    {t:'img', src:'img/c29.png', cats:['bblab'], cap:'BB LAB · 열기구 비주얼'},
+    {t:'img', src:'img/c06.png', cats:['shinhan'], cap:'신한투자증권 · 지구 반바퀴 ETF 투자여행'},
+    {t:'img', src:'img/c16.png', cats:['camp'], cap:'캠페인 · 스마트폰 백업이 짝!'},
+    {t:'img', src:'img/c14.png', cats:['camp'], cap:'보험 · 응원봉과 보험도 필요하구나'},
+    {t:'img', src:'img/c18.png', cats:['camp'], cap:'캠페인 · 머글!'},
+    {t:'img', src:'img/c19.png', cats:['camp'], cap:'캠페인 · 신규계좌 개설 10,000원'}
+  ];
+
+  var grid = document.getElementById('aicGrid');
+  var empty = document.getElementById('aicEmpty');
+  var U = function(p){ return ASSET_BASE + p; };
+  var pad = function(n){ return (n<10?'0':'') + n; };
+
+  // build cards
+  ITEMS.forEach(function(it, i){
+    it.idx = 'AI-' + pad(i+1);
+    var card = document.createElement('div');
+    card.className = 'aic-card';
+    card.setAttribute('data-cats', it.cats.concat(it.t==='video'?['video']:[]).join(' '));
+
+    var media;
+    if(it.t === 'video'){
+      media = document.createElement('video');
+      media.src = U(it.src);
+      if(it.poster) media.poster = U(it.poster);
+      media.muted = true; media.loop = true; media.playsInline = true;
+      media.setAttribute('muted',''); media.setAttribute('playsinline','');
+      media.setAttribute('webkit-playsinline',''); media.setAttribute('loop','');
+      media.preload = 'metadata';
+    } else {
+      media = document.createElement('img');
+      media.src = U(it.src); media.loading = 'lazy'; media.alt = it.cap;
+    }
+    card.appendChild(media);
+
+    if(it.t === 'video'){
+      var vb = document.createElement('span');
+      vb.className = 'aic-vbadge';
+      vb.innerHTML = '<span class="lv"></span> 자동재생';
+      card.appendChild(vb);
+    } else {
+      var tg = document.createElement('span');
+      tg.className = 'aic-tag'; tg.textContent = 'AI';
+      card.appendChild(tg);
+    }
+
+    var idx = document.createElement('span');
+    idx.className = 'aic-idx'; idx.textContent = it.idx;
+    card.appendChild(idx);
+
+    var cap = document.createElement('span');
+    cap.className = 'aic-cap'; cap.textContent = it.cap;
+    card.appendChild(cap);
+
+    card.addEventListener('click', function(){ openLb(it); });
+    grid.appendChild(card);
+    it._el = card;
+  });
+
+  // autoplay videos only while visible (saves bandwidth, reliable on mobile)
+  var vids = grid.querySelectorAll('video');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target;
+        if(e.isIntersecting){ var p = v.play(); if(p&&p.catch) p.catch(function(){}); }
+        else { v.pause(); }
+      });
+    }, {threshold:0.25});
+    vids.forEach(function(v){ io.observe(v); });
+  } else {
+    vids.forEach(function(v){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+  }
+
+  // filters
+  var filters = document.getElementById('aicFilters');
+  filters.addEventListener('click', function(e){
+    var btn = e.target.closest('.aic-chip'); if(!btn) return;
+    filters.querySelectorAll('.aic-chip').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+    btn.setAttribute('aria-pressed','true');
+    var f = btn.getAttribute('data-f'); var shown = 0;
+    ITEMS.forEach(function(it){
+      var ok = (f === 'all') || it._el.getAttribute('data-cats').split(' ').indexOf(f) > -1;
+      it._el.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  });
+
+  // lightbox
+  var lb = document.getElementById('aicLb');
+  var lbMedia = document.getElementById('aicLbMedia');
+  var lbCap = document.getElementById('aicLbCap');
+  function openLb(it){
+    lbMedia.innerHTML = '';
+    if(it.t === 'video'){
+      var v = document.createElement('video');
+      v.src = U(it.src); if(it.poster) v.poster = U(it.poster);
+      v.controls = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('playsinline',''); v.muted = false;
+      lbMedia.appendChild(v);
+    } else {
+      var im = document.createElement('img'); im.src = U(it.src); im.alt = it.cap;
+      lbMedia.appendChild(im);
+    }
+    lbCap.innerHTML = it.cap + '<span>' + it.idx + ' · marketing CLOUD</span>';
+    lb.classList.add('open');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    lb.classList.remove('open');
+    lbMedia.innerHTML = '';
+    document.documentElement.style.overflow = '';
+  }
+  document.getElementById('aicLbX').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+})();
+</script>
+</body>
+</html>
