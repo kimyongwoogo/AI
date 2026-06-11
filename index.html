@@ -183,19 +183,20 @@
       <h1 class="aic-title">AI <em>CREATIVE</em></h1>
       <p class="aic-lead">크리에이티브팀이 직접 제작한 <b>AI Creative Sample</b>로<br>고효율 광고 소재를 지속적으로 개발합니다.</p>
       <div class="aic-meta">
-        <div class="stat"><div class="n">34<span class="plus">+</span></div><div class="l">제작 소재 / SAMPLES</div></div>
+        <div class="stat"><div class="n">42<span class="plus">+</span></div><div class="l">제작 소재 / SAMPLES</div></div>
         <div class="stat"><div class="n">05</div><div class="l">자동재생 영상 / VIDEO</div></div>
-        <div class="stat"><div class="n">04</div><div class="l">브랜드 / CLIENTS</div></div>
+        <div class="stat"><div class="n">05</div><div class="l">업종 / CATEGORY</div></div>
       </div>
     </header>
 
     <div class="aic-filters" id="aicFilters">
       <button class="aic-chip" data-f="all" aria-pressed="true">전체</button>
       <button class="aic-chip" data-f="video" aria-pressed="false">영상</button>
-      <button class="aic-chip" data-f="shinhan" aria-pressed="false">신한투자증권</button>
-      <button class="aic-chip" data-f="skylife" aria-pressed="false">KT 스카이라이프</button>
-      <button class="aic-chip" data-f="bblab" aria-pressed="false">BB LAB</button>
-      <button class="aic-chip" data-f="camp" aria-pressed="false">보험 · 캠페인</button>
+      <button class="aic-chip" data-f="finance" aria-pressed="false">금융</button>
+      <button class="aic-chip" data-f="it" aria-pressed="false">IT</button>
+      <button class="aic-chip" data-f="health" aria-pressed="false">건기식</button>
+      <button class="aic-chip" data-f="insurance" aria-pressed="false">보험</button>
+      <button class="aic-chip" data-f="fashion" aria-pressed="false">패션</button>
     </div>
 
     <div class="aic-grid" id="aicGrid"></div>
@@ -228,40 +229,48 @@
   // type:'video' 는 자동재생(무음·반복), 'img' 는 정지 이미지
   // cats: 필터 분류 / cap: 카드 설명 / idx: 일련번호
   var ITEMS = [
-    {t:'video', src:'video/v01.mp4', poster:'img/p-v01.png', cats:['skylife'], cap:'KT 스카이라이프 · “내가 원하는 속도로?”'},
-    {t:'img', src:'img/c05.jpg', cats:['shinhan'], cap:'신한투자증권 · AI 추천주로 빠르게 환승'},
-    {t:'img', src:'img/c07.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면?'},
-    {t:'video', src:'video/v02.mp4', poster:'img/p-v02.png', cats:['bblab'], cap:'BB LAB · 브랜드 필름'},
-    {t:'img', src:'img/c25.png', cats:['bblab'], cap:'BB LAB · 석류 콜라겐'},
-    {t:'img', src:'img/c02.jpg', cats:['shinhan'], cap:'신한투자증권 · 시원하게 뺑!'},
-    {t:'img', src:'img/c21.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 가정이 가장 좋아하는 요금제'},
-    {t:'img', src:'img/c11.png', cats:['camp'], cap:'캠페인 · 덕질·보(保) 콘텐츠'},
-    {t:'video', src:'video/v04.mp4', poster:'img/p-v04.png', cats:['skylife'], cap:'KT 스카이라이프 · 라인 모션 그래픽'},
-    {t:'img', src:'img/c10.png', cats:['camp'], cap:'보험 · 효도는 티켓으로, 사랑은 보험으로'},
-    {t:'img', src:'img/c08.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면? (2)'},
-    {t:'img', src:'img/c27.png', cats:['bblab'], cap:'BB LAB · 모델 룩북'},
-    {t:'img', src:'img/c01.png', cats:['shinhan'], cap:'신한투자증권 · 1달러 모험단'},
-    {t:'video', src:'video/v05.mp4', poster:'img/p-v05.png', cats:['camp'], cap:'모바일 라이프스타일 필름'},
-    {t:'img', src:'img/c22.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 혜택 넘치는 30GB 요금제'},
-    {t:'img', src:'img/c15.png', cats:['camp'], cap:'ALICE · 덕밍아웃 선물 캠페인'},
-    {t:'img', src:'img/c26.png', cats:['bblab'], cap:'BB LAB · 석류 콜라겐 (2)'},
-    {t:'img', src:'img/c03.jpg', cats:['shinhan'], cap:'신한투자증권 · 상한가(O)'},
-    {t:'img', src:'img/c09.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 게임 좀 친다면? (3)'},
-    {t:'img', src:'img/c17.png', cats:['camp'], cap:'캠페인 · 동파!'},
-    {t:'video', src:'video/v03.mp4', poster:'img/p-v03.png', cats:['camp'], cap:'스마트폰 백업이 “짝!”'},
-    {t:'img', src:'img/c12.png', cats:['camp'], cap:'보험 · 오늘은 아들한테'},
-    {t:'img', src:'img/c23.jpeg', cats:['skylife'], cap:'KT 스카이라이프 · 엉뚱도 WON해요'},
-    {t:'img', src:'img/c28.png', cats:['bblab'], cap:'BB LAB · 콜라겐S'},
-    {t:'img', src:'img/c04.jpg', cats:['shinhan'], cap:'신한투자증권 · 신규 주식매일장'},
-    {t:'img', src:'img/c20.jpeg', cats:['camp'], cap:'캠페인 · 청년만 가능한 조합, ONLY YOUTH'},
-    {t:'img', src:'img/c13.png', cats:['camp'], cap:'보험 · 콘서트 티켓과 덕질용품을'},
-    {t:'img', src:'img/c24.png', cats:['skylife'], cap:'KT 스카이라이프 · 우리가 WON하면 편한 여행'},
-    {t:'img', src:'img/c29.png', cats:['bblab'], cap:'BB LAB · 열기구 비주얼'},
-    {t:'img', src:'img/c06.png', cats:['shinhan'], cap:'신한투자증권 · 지구 반바퀴 ETF 투자여행'},
-    {t:'img', src:'img/c16.png', cats:['camp'], cap:'캠페인 · 스마트폰 백업이 짝!'},
-    {t:'img', src:'img/c14.png', cats:['camp'], cap:'보험 · 응원봉과 보험도 필요하구나'},
-    {t:'img', src:'img/c18.png', cats:['camp'], cap:'캠페인 · 머글!'},
-    {t:'img', src:'img/c19.png', cats:['camp'], cap:'캠페인 · 신규계좌 개설 10,000원'}
+    {t:'video', src:'video/v01.mp4', poster:'img/p-v01.png', cats:['it'], cap:'KT 스카이라이프 · “내가 원하는 속도로?”'},
+    {t:'img', src:'img/f03.png', cats:['fashion'], cap:'TALLI · 가방 하나로 완성하는 다양한 무드'},
+    {t:'img', src:'img/c05.jpg', cats:['insurance'], cap:'신한 · AI 추천주로 빠르게 환승'},
+    {t:'img', src:'img/f01.jpg', cats:['fashion'], cap:'TALLI · 베스트 데일리백, 밀로페니백'},
+    {t:'img', src:'img/c07.jpeg', cats:['it'], cap:'KT 스카이라이프 · 게임 좀 친다면?'},
+    {t:'video', src:'video/v02.mp4', poster:'img/p-v02.png', cats:['health'], cap:'BB LAB · 브랜드 필름'},
+    {t:'img', src:'img/g03.jpg', cats:['fashion'], cap:'하프클럽 × 티오더 · 매장 태블릿 광고'},
+    {t:'img', src:'img/c25.png', cats:['health'], cap:'BB LAB · 석류 콜라겐'},
+    {t:'img', src:'img/f05.png', cats:['fashion'], cap:'TALLI · 컬렉션 룩북'},
+    {t:'img', src:'img/c02.jpg', cats:['insurance'], cap:'신한 · 시원하게 뺑!'},
+    {t:'img', src:'img/c21.jpeg', cats:['it'], cap:'KT 스카이라이프 · 가정이 가장 좋아하는 요금제'},
+    {t:'img', src:'img/f02.png', cats:['fashion'], cap:'TALLI · 시그니처 빅백 캠페인'},
+    {t:'img', src:'img/c11.png', cats:['insurance'], cap:'보험 · 덕질·보(保) 콘텐츠'},
+    {t:'video', src:'video/v04.mp4', poster:'img/p-v04.png', cats:['it'], cap:'KT 스카이라이프 · 라인 모션 그래픽'},
+    {t:'img', src:'img/c10.png', cats:['insurance'], cap:'보험 · 효도는 티켓으로, 사랑은 보험으로'},
+    {t:'img', src:'img/g02.png', cats:['fashion'], cap:'하프클럽 · My Summer Mood 프로모션'},
+    {t:'img', src:'img/c08.jpeg', cats:['it'], cap:'KT 스카이라이프 · 게임 좀 친다면? (2)'},
+    {t:'img', src:'img/c27.png', cats:['health'], cap:'BB LAB · 모델 룩북'},
+    {t:'img', src:'img/c01.png', cats:['insurance'], cap:'신한 · 1달러 모험단'},
+    {t:'video', src:'video/v05.mp4', poster:'img/p-v05.png', cats:['fashion'], cap:'하프클럽 · 모바일 쇼핑 라이프스타일 필름'},
+    {t:'img', src:'img/c22.jpeg', cats:['it'], cap:'KT 스카이라이프 · 혜택 넘치는 30GB 요금제'},
+    {t:'img', src:'img/c15.png', cats:['insurance'], cap:'보험 · 자식에게 받고 싶은 선물 1위'},
+    {t:'img', src:'img/f04.png', cats:['fashion'], cap:'TALLI · 데일리룩부터 포멀 스타일링까지'},
+    {t:'img', src:'img/c26.png', cats:['health'], cap:'BB LAB · 석류 콜라겐 (2)'},
+    {t:'img', src:'img/c03.jpg', cats:['insurance'], cap:'신한 · 상한가(O)'},
+    {t:'img', src:'img/c09.jpeg', cats:['it'], cap:'KT 스카이라이프 · 게임 좀 친다면? (3)'},
+    {t:'img', src:'img/g01.png', cats:['fashion'], cap:'패션 · 데님 셔츠 데일리 룩북'},
+    {t:'img', src:'img/c17.png', cats:['insurance'], cap:'보험 · 한파에 수도관 동파, 신한 슈퍼SOL'},
+    {t:'video', src:'video/v03.mp4', poster:'img/p-v03.png', cats:['insurance'], cap:'보험 · 스마트폰 액정 파손 보장'},
+    {t:'img', src:'img/c12.png', cats:['insurance'], cap:'보험 · 오늘은 아들한테'},
+    {t:'img', src:'img/c23.jpeg', cats:['it'], cap:'KT 스카이라이프 · 엉뚱도 WON해요'},
+    {t:'img', src:'img/c28.png', cats:['health'], cap:'BB LAB · 콜라겐S'},
+    {t:'img', src:'img/c04.jpg', cats:['insurance'], cap:'신한 · 신규 주식매일장'},
+    {t:'img', src:'img/c20.jpeg', cats:['finance'], cap:'금융 · 우리WON 청년 통신적금'},
+    {t:'img', src:'img/c13.png', cats:['insurance'], cap:'보험 · 콘서트 티켓과 덕질용품을'},
+    {t:'img', src:'img/c24.png', cats:['it'], cap:'KT 스카이라이프 · 우리가 WON하면 편한 여행'},
+    {t:'img', src:'img/c29.png', cats:['health'], cap:'BB LAB · 열기구 비주얼'},
+    {t:'img', src:'img/c06.png', cats:['insurance'], cap:'신한 · 지구 반바퀴 ETF 투자여행'},
+    {t:'img', src:'img/c16.png', cats:['insurance'], cap:'보험 · 스마트폰 액정이 짝!'},
+    {t:'img', src:'img/c14.png', cats:['insurance'], cap:'보험 · 응원봉과 보험도 필요하구나'},
+    {t:'img', src:'img/c18.png', cats:['insurance'], cap:'보험 · 출렁이던 일상에 머글!'},
+    {t:'img', src:'img/c19.png', cats:['insurance'], cap:'신한 · 신규 계좌 개설 10,000원 혜택'}
   ];
 
   var grid = document.getElementById('aicGrid');
